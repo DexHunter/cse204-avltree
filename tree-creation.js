@@ -3,6 +3,7 @@ var id = 1;
 var data = {
   id: id++,
   data: null,
+  value: null,
   parent: null,
   children: []
 };
@@ -30,12 +31,14 @@ function rotateLeft(node, callback) {
     rightChild.children.push({
       id: id++,
       data: null,
+      value: null,
       parent: rightChild,
       children: []
     });
     rightChild.children.push({
       id: id++,
       data: null,
+      value: null,
       parent: rightChild,
       children: []
     });
@@ -261,7 +264,7 @@ function balance(node, callback) {
 }
 
 // Tree insertion
-function insert(n, callback) {
+function insert(n, n2, callback) {
   console.log('Insert', n);
   if (!n || !Number.isInteger(n)) return;
   if (!data.data) {
@@ -281,12 +284,14 @@ function insert(n, callback) {
         walker.children.push({
           id: id++,
           data: n,
+          value: n2,
           parent: walker,
           children: []
         }); // Left child
         walker.children.push({
           id: id++,
           data: null,
+          value: null,
           parent: walker,
           children: []
         }); // Empty right child
@@ -305,12 +310,14 @@ function insert(n, callback) {
         walker.children.push({
           id: id++,
           data: null,
+          value: null,
           parent: walker,
           children: []
         }); // Empty left child
         walker.children.push({
           id: id++,
           data: n,
+          value: n2,
           parent: walker,
           children: []
         }); // Right child
@@ -318,6 +325,7 @@ function insert(n, callback) {
       } else if (walker.children[1].data === null) {
         // Already have left child, right child is empty
         walker.children[1].data = n;
+        walker.children[1].value = n2;
         newNode = walker.children[1];
       } else {
         // Move left
@@ -378,6 +386,7 @@ function deleteTree(n, callback) {
             parent.children[0] = {
               id: id++,
               data: null,
+              value: null,
               parent: parent,
               children: []
             };
@@ -390,6 +399,7 @@ function deleteTree(n, callback) {
             parent.children[1] = {
               id: id++,
               data: null,
+              value: null,
               parent: parent,
               children: []
             };
@@ -459,6 +469,7 @@ function deleteTree(n, callback) {
       parent.children[0] = {
         id: id++,
         data: null,
+        value: null,
         parent: parent,
         children: []
       }; // Empty child
@@ -467,6 +478,7 @@ function deleteTree(n, callback) {
       parent.children[1] = {
         id: id++,
         data: null,
+        value: null,
         parent: parent,
         children: []
       };
@@ -511,6 +523,7 @@ function deleteTree(n, callback) {
           parent.children[0] = {
             id: id++,
             data: null,
+            value: null,
             parent: parent,
             children: []
           };
@@ -523,6 +536,7 @@ function deleteTree(n, callback) {
           parent.children[1] = {
             id: id++,
             data: null,
+            value: null,
             parent: parent,
             children: []
           };
@@ -593,7 +607,7 @@ async function findNode(n, callback) {
     // Move right
     else if (n === walker.data) {
       NodeToFind = walker;
-      msg.innerHTML = 'Value: ' + walker.data;
+      msg.innerHTML = 'Value: ' + walker.value;
       console.log(count);
       running_time.innerHTML =
         'Running Time: ' +

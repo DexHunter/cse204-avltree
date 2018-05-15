@@ -191,7 +191,7 @@ var handleInsert = function(event) {
       // Disable insert
       d3.select(this).attr('disabled', '');
     });
-    insert(parseInt(num), function() {
+    insert(parseInt(num), parseInt(value), function() {
       d3.selectAll('#insertTree input').each(function() {
         // Enable insert
         d3.select(this).attr('disabled', null);

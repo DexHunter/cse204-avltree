@@ -30,4 +30,4 @@ And still balanced, whooray!
 ## Notes
 
 * The value is not not necessary but for assginment only (to simulate an ordered dictionary ADT)
-* The
+* Need to have key to insert/delete/search

@@ -112,12 +112,14 @@ function rotateRight(node, callback) {
     leftChild.children.push({
       id: id++,
       data: null,
+      value: null,
       parent: leftChild,
       children: []
     });
     leftChild.children.push({
       id: id++,
       data: null,
+      value: null,
       parent: leftChild,
       children: []
     });
@@ -265,10 +267,12 @@ function balance(node, callback) {
 
 // Tree insertion
 function insert(n, n2, callback) {
+  t0 = performance.now();
   console.log('Insert', n);
   if (!n || !Number.isInteger(n)) return;
   if (!data.data) {
     data.data = n;
+    data.value = n2;
     updateTree();
     callback();
     return;
@@ -334,6 +338,8 @@ function insert(n, n2, callback) {
     }
   }
   updateTree();
+  running_time.innerHTML =
+    'Running Time: ' + (performance.now() - t0) + ' milliseconds.';
   setTimeout(function() {
     balance(newNode, callback);
     //callback();
@@ -342,6 +348,7 @@ function insert(n, n2, callback) {
 
 // Tree deletion
 function deleteTree(n, callback) {
+  t0 = performance.now();
   if (!data.data) return false;
   var walker = data,
     nodeDelete = null, // Node to be deleted
@@ -570,6 +577,8 @@ function deleteTree(n, callback) {
   }
 
   updateTree();
+  running_time.innerHTML =
+    'Running Time: ' + (performance.now() - t0) + ' milliseconds.';
   setTimeout(function() {
     if (nodeBalance) balance(nodeBalance, callback);
     else if (callback instanceof Function) callback();
@@ -588,15 +597,19 @@ async function findNode(n, callback) {
     return;
   }
 
-  var walker = data,
-    NodeToFind;
+  var walker = data;
 
   console.log(walker);
 
   var count = 1;
+  var height = findHeight(walker);
+
+  msg.innerHTML = 'Value: NOT FOUND';
+  console.log('height: ' + height);
 
   // Finding node
-  while (!NodeToFind) {
+  while (count < height + 1) {
+    console.log('Count: ' + count);
     highlight(walker);
     await sleep(duration);
     removeHighlight(walker);
@@ -606,9 +619,9 @@ async function findNode(n, callback) {
     else if (n > walker.data) walker = walker.children[1];
     // Move right
     else if (n === walker.data) {
-      NodeToFind = walker;
+      //   NodeToFind = walker;
       msg.innerHTML = 'Value: ' + walker.value;
-      console.log(count);
+      console.log('Count: ' + count);
       running_time.innerHTML =
         'Running Time: ' +
         (performance.now() - t0 - duration * count) +

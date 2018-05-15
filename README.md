@@ -31,3 +31,8 @@ And still balanced, whooray!
 
 * The value is not not necessary but for assginment only (to simulate an ordered dictionary ADT)
 * Need to have key to insert/delete/search
+
+## Some tutorials on AVL Tree:
+
+* http://btechsmartclass.com/DS/U5_T2.html
+* https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/lecture-videos/lecture-6-avl-trees-avl-sort/

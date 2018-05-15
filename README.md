@@ -1,6 +1,6 @@
 # CSE204 Project3
 
-## Requirement
+## Requirement (copy from coursework)
 
 Write an applet or stand-alone graphical program that animates an AVL tree. Your program should support all the AVL tree operations (search, insert, remove).
 
@@ -10,7 +10,7 @@ Since the AVL Java code is already in our text book, your program should also su
 
 ![Screenshot](demo.gif)
 
-This demo follows part of the [video tutorial](https://www.youtube.com/watch?v=7m94k2Qhg68) and I encourge to watch the tutorial as well. Let's get our hands dirty.
+This demo follows part of the [video tutorial](https://www.youtube.com/watch?v=7m94k2Qhg68) and I encourge you to watch the tutorial as well. Let's get our hands dirty.
 
 1.  Insert (43,)
 2.  Insert (18,)
